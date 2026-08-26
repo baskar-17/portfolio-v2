@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /contactSubmissions/{document} {
+      allow create: if true; // Allow visitors to submit contact forms
+      allow read, update, delete: if false; // Block anyone from viewing or modifying leads
+    }
+  }
+}
